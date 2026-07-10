@@ -1,7 +1,7 @@
 create table if not exists users(
   name text primary key,
   bcryptPassword text not null,
-  level int not null default 1 /* 1=member 9=admin */
+  level int not null default 1 /* 1=member 8+=admin */
 );
 
 create table if not exists photos(
@@ -17,8 +17,8 @@ create table if not exists likes(
     userName text not null,
     photoId integer not null,
     primary key(userName, photoId),
-    foreign key(userName) references users(name),
-    foreign key(photoId) references photos(id)
+    foreign key(userName) references users(name) on delete cascade,
+    foreign key(photoId) references photos(id) on delete cascade
 );
 
 insert or replace into users(name,bcryptPassword,level) values(
@@ -39,7 +39,7 @@ insert or replace into photos (id,filename, caption, uploadedBy) values
     (3, 'nowaaaay.png', 'no waaaaaaay', 'user');
 
 
-insert into likes (userName, photoId) values
+insert or replace into likes (userName, photoId) values
 ('admin', 3),
 ('user', 1),
 ('user', 2);
