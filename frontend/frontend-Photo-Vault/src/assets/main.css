@@ -1,0 +1,184 @@
+/* ---- Fonts ---- */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap');
+
+/* ---- Design tokens ---- */
+:root {
+  --paper: #f5efe6;
+  --surface: #fbf7f0;
+  --surface-2: #f0e8db;
+  --ink: #2e2a24;
+  --ink-soft: #5b5347;
+  --muted: #8a7e6d;
+  --accent: #c4622d;
+  --accent-dark: #a44f22;
+  --line: #e3d9c8;
+  --shadow: 0 4px 18px rgba(60, 46, 28, 0.10);
+  --shadow-lift: 0 10px 30px rgba(60, 46, 28, 0.16);
+  --radius: 14px;
+
+  --display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* ---- Reset-ish ---- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--body);
+  background-color: var(--paper);
+  color: var(--ink);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+#app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--display);
+  font-weight: 600;
+  line-height: 1.15;
+  margin: 0 0 0.4em;
+  letter-spacing: -0.01em;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--accent-dark);
+}
+
+button {
+  font-family: var(--body);
+  cursor: pointer;
+}
+
+/* ---- App nav ---- */
+.app-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1rem 2rem;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.app-nav__brand {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  margin-right: auto;
+}
+
+.app-nav__brand:hover {
+  color: var(--ink);
+}
+
+.app-nav__brand span {
+  color: var(--accent);
+}
+
+.app-nav a.app-nav__link {
+  color: var(--ink-soft);
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 0.35rem 0.2rem;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.app-nav a.app-nav__link:hover {
+  color: var(--ink);
+}
+
+.app-nav a.app-nav__link.router-link-exact-active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.app-nav__logout {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  transition: all 0.15s;
+}
+
+.app-nav__logout:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+/* ---- Main content area ---- */
+.app-main {
+  flex: 1;
+  width: 100%;
+}
+
+/* ---- Footer ---- */
+.app-footer {
+  border-top: 1px solid var(--line);
+  background: var(--surface);
+  padding: 2rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.app-footer strong {
+  font-family: var(--display);
+  color: var(--ink-soft);
+  font-weight: 600;
+}
+
+/* ---- Shared button ---- */
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 0.7rem 1.4rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: background 0.15s, transform 0.05s;
+}
+
+.btn-primary:hover {
+  background: var(--accent-dark);
+}
+
+.btn-primary:active {
+  transform: translateY(1px);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

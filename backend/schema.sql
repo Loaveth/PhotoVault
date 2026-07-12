@@ -34,9 +34,10 @@ insert or replace into users(name,bcryptPassword,level) values(
 );
 
 insert or replace into photos (id,filename, caption, uploadedBy) values
-    (1, 'aib_und_lia.png', 'Lia and Aibo as kids', 'admin'),
-    (2, 'Firefly_aibo_lia.png', 'Lia and Aibo just sitting', 'admin'),
-    (3, 'nowaaaay.png', 'no waaaaaaay', 'user');
+    (1, 'stock-1.jpg', 'stock 1', 'admin'),
+    (2, 'stock-2.jpg', 'stock 2', 'admin'),
+    (3, 'stock-3.jpg', 'stock 3', 'user'),
+    (4, 'stock-4.jpg', 'stock 4', 'user');
 
 
 insert or replace into likes (userName, photoId) values
