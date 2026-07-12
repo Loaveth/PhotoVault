@@ -60,7 +60,11 @@ async function toggleFavorite(photo: Photo) {
     }
   }
 
-  await loadFavorites()
+    try {
+    await loadFavorites()
+    } catch {
+    // offline — the favorite is queued and will sync; skip the refresh
+    }
 }
 
 async function loadFavorites() {
