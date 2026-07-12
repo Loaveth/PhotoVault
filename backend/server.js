@@ -22,6 +22,14 @@ app.use('/images', express.static('photos'))
 
 app.use(router)
 
+if (process.env.ALLOW_RESET_DATABASE) {
+  app.put('/reset_database', (req, res) => {
+    data.dropAllTables()
+    data.applySchema()
+    res.json({})
+  })
+}
+
 app.listen(3000, () => {
     console.log('Server running on port 3000')
 })

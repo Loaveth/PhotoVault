@@ -84,3 +84,12 @@ export function deleteLike(photoId, userName) {
     const result = db.prepare('DELETE FROM likes WHERE photoId = ? AND userName = ?').run(photoId, userName);
     return result.changes;
 }
+
+export function dropAllTables() {
+  db.exec(`
+    DROP TABLE IF EXISTS likes;
+    DROP TABLE IF EXISTS photos;
+    DROP TABLE IF EXISTS users;
+  `)
+}
+
