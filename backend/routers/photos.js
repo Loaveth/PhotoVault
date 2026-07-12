@@ -1,4 +1,5 @@
 import express from "express";
+import { sendEvent } from "./events.js"
 import * as data from "../data.js";
 
 const router = express.Router();
@@ -20,6 +21,10 @@ router.post("/", (req, res) => {
     const { filename, caption } = req.body;
     const id = data.insertPhoto(filename, caption, req.userName);
 
+    sendEvent(JSON.stringify({
+        type: 'newPhoto',
+        photo: { id, filename, caption, uploadedBy: req.userName }
+    }))
     res.status(201).json({ id, filename, caption, uploadedBy: req.userName });
 });
 

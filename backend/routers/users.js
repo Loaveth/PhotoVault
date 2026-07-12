@@ -1,5 +1,6 @@
 import express from "express";
 import bcrypt from "bcrypt";
+import { sendEvent } from "./events.js"
 import * as data from "../data.js";
 
 const router = express.Router();
@@ -54,7 +55,13 @@ router.post("/:name/likes", (req, res) => {
         return res.status(409).json({ error: "Like already exists" });
     }
 
-    res.status(201).json({ photoId: req.body.photoId });
+    const photo = data.getPhoto(req.body.photoId)
+    sendEvent(JSON.stringify({
+        type: 'like',
+        user: req.params.name,
+        photo: photo.caption ?? photo.filename
+    }))
+    res.status(201).json({ photoId: req.body.photoId })
 });
 
 router.delete("/:name/likes/:photoId", (req, res) => {
